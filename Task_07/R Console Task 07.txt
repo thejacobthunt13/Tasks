@@ -1,0 +1,122 @@
+
+R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin17.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[R.app GUI 1.73 (7892) x86_64-apple-darwin17.0]
+
+[History restored from /Users/karenhunt/.Rapp.history]
+
+> library("phytools")
+Loading required package: ape
+Loading required package: maps
+> install.packages("phytools")
+--- Please select a CRAN mirror for use in this session ---
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/phytools_0.7-70.tgz'
+Content type 'application/x-gzip' length 2137373 bytes (2.0 MB)
+==================================================
+downloaded 2.0 MB
+
+
+The downloaded binary packages are in
+	/var/folders/tn/rx6m6pzx5z98hcxttryx5jfw0000gn/T//Rtmpdtxnr1/downloaded_packages
+> install.packages("ape")
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/ape_5.4-1.tgz'
+Content type 'application/x-gzip' length 2650273 bytes (2.5 MB)
+==================================================
+downloaded 2.5 MB
+
+
+The downloaded binary packages are in
+	/var/folders/tn/rx6m6pzx5z98hcxttryx5jfw0000gn/T//Rtmpdtxnr1/downloaded_packages
+> text.string <- 
++ "(((((((cow, pig), whale),(bat,(lemur,human))), (robin,iguana)),coelacanth),(gold_fish, trout)),shark);"
+> vert.tree <- read.tree(text=text.string)
+> plot(vert.tree, edge.width=2)
+> nodelabels(fram="circle", bg='white', cex=1)
+> vert.tree
+
+Phylogenetic tree with 12 tips and 11 internal nodes.
+
+Tip labels:
+  cow, pig, whale, bat, lemur, human, ...
+
+Rooted; no branch lengths.
+> str(vert.tree)
+List of 3
+ $ edge     : int [1:22, 1:2] 13 14 15 16 17 18 19 19 18 17 ...
+ $ Nnode    : int 11
+ $ tip.label: chr [1:12] "cow" "pig" "whale" "bat" ...
+ - attr(*, "class")= chr "phylo"
+ - attr(*, "order")= chr "cladewise"
+> tree <- read.tree(text="(((A,B)(C,D)),E);")
+Error in FUN(X[[i]], ...) : attempt to set index 4/4 in SET_STRING_ELT
+> tree <- read.tree(text="(((A,B),(C,D)),E);")
+> plotTree(tree,offset=1)
+> tiplabels(frame="circle", bg='lightblue', cex=1)
+> nodelabels(frame="circle", bg='white', cex=1)
+> tree$tip.label
+[1] "A" "B" "C" "D" "E"
+> tree$edge
+     [,1] [,2]
+[1,]    6    7
+[2,]    7    8
+[3,]    8    1
+[4,]    8    2
+[5,]    7    9
+[6,]    9    3
+[7,]    9    4
+[8,]    6    5
+> AnolisTree <- force.ultrametric(read.tree("https://jonsmitchell.com/data/anolis.tre"))
+> par(las=1)
+> hist(AnolisTree$edge.length, col='black', border='white', main="", xlab="edge lengths for the Anolis tree", ylim=c(0, 50), xlim=c(0, 6))
+> tipEdges <- which(AnolisTree$edge[,2] <= Ntip(AnolisTree))
+> Lengths <- AnolisTree$edge.length
+> names(Lengths) <- AnolisTree$tip.label
+> names(Lengths)[which(Lengths == min(Lengths))]
+[1] "Anolis_occultus"
+> plot(AnolisTree, cex=0.25)
+> Labs <- sapply(AnolisTree$edge.length, round, digits=2)
+> edgelabels(text=Labs, cex=0.25)
+> ?plot.phylo
+starting httpd help server ... done
+> AnolisTree <- force.ultrametric(read.tree("https://jonsmitchell.com/data/anolis.tre"))
+> n <- length(AnolisTree$tip.label)
+> ee <- setNames
+> (AnolisTree$edge.length[sapply(1:n,function(x,y)which(y==x), y=AnolisTree$edge[,2])],AnolisTree$tip.label)
+Error: unexpected ',' in "(AnolisTree$edge.length[sapply(1:n,function(x,y)which(y==x), y=AnolisTree$edge[,2])],"
+> ltt(AnolisTree)
+Object of class "ltt" containing:
+
+(1) A phylogenetic tree with 82 tips and 81 internal
+    nodes.
+
+(2) Vectors containing the number of lineages (ltt) and
+    branching times (times) on the tree.
+
+(3) A value for Pybus & Harvey's "gamma" statistic of
+    gamma = -4.5623, p-value = 0.
+
+> abline(0, 1, lwd=2, col='red', lty=2)
+> fit.bd()
+Error in is.ultrametric(tree) : 
+  argument "tree" is missing, with no default
+> fit.bd(tree)
+Error in .is.ultrametric_ape(phy, tol, option, length(phy$tip.label)) : 
+  the tree has no branch lengths
+objc[4828]: Class FIFinderSyncExtensionHost is implemented in both /System/Library/PrivateFrameworks/FinderKit.framework/Versions/A/FinderKit (0x7fffab7a23d8) and /System/Library/PrivateFrameworks/FileProvider.framework/OverrideBundles/FinderSyncCollaborationFileProviderOverride.bundle/Contents/MacOS/FinderSyncCollaborationFileProviderOverride (0x10b3a1f50). One of the two will be used. Which one is undefined.
+> 
