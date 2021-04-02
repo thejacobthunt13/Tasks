@@ -1,0 +1,740 @@
+
+R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin17.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[R.app GUI 1.73 (7892) x86_64-apple-darwin17.0]
+
+[History restored from /Users/karenhunt/.Rapp.history]
+
+> setwd('~/Desktop/Evolution/Tasks/Task_08')
+> library('phytools')
+Loading required package: ape
+Loading required package: maps
+> tree <- read.tree('https://jonsmitchell.com/data/anolis.tre')
+> plot(tree, type='fan')
+> tree$tip.label
+ [1] "Anolis_ahli"            "Anolis_allogus"        
+ [3] "Anolis_rubribarbus"     "Anolis_imias"          
+ [5] "Anolis_sagrei"          "Anolis_bremeri"        
+ [7] "Anolis_quadriocellifer" "Anolis_ophiolepis"     
+ [9] "Anolis_mestrei"         "Anolis_jubar"          
+[11] "Anolis_homolechis"      "Anolis_confusus"       
+[13] "Anolis_guafe"           "Anolis_garmani"        
+[15] "Anolis_opalinus"        "Anolis_grahami"        
+[17] "Anolis_valencienni"     "Anolis_lineatopus"     
+[19] "Anolis_evermanni"       "Anolis_stratulus"      
+[21] "Anolis_krugi"           "Anolis_pulchellus"     
+[23] "Anolis_gundlachi"       "Anolis_poncensis"      
+[25] "Anolis_cooki"           "Anolis_cristatellus"   
+[27] "Anolis_brevirostris"    "Anolis_caudalis"       
+[29] "Anolis_marron"          "Anolis_websteri"       
+[31] "Anolis_distichus"       "Anolis_alumina"        
+[33] "Anolis_semilineatus"    "Anolis_olssoni"        
+[35] "Anolis_insolitus"       "Anolis_whitemani"      
+[37] "Anolis_haetianus"       "Anolis_breslini"       
+[39] "Anolis_armouri"         "Anolis_cybotes"        
+[41] "Anolis_shrevei"         "Anolis_longitibialis"  
+[43] "Anolis_strahmi"         "Anolis_marcanoi"       
+[45] "Anolis_baleatus"        "Anolis_barahonae"      
+[47] "Anolis_ricordii"        "Anolis_cuvieri"        
+[49] "Anolis_altitudinalis"   "Anolis_oporinus"       
+[51] "Anolis_isolepis"        "Anolis_allisoni"       
+[53] "Anolis_porcatus"        "Anolis_loysiana"       
+[55] "Anolis_guazuma"         "Anolis_placidus"       
+[57] "Anolis_sheplani"        "Anolis_alayoni"        
+[59] "Anolis_angusticeps"     "Anolis_paternus"       
+[61] "Anolis_alutaceus"       "Anolis_inexpectatus"   
+[63] "Anolis_clivicola"       "Anolis_cupeyalensis"   
+[65] "Anolis_cyanopleurus"    "Anolis_alfaroi"        
+[67] "Anolis_macilentus"      "Anolis_vanidicus"      
+[69] "Anolis_baracoae"        "Anolis_noblei"         
+[71] "Anolis_smallwoodi"      "Anolis_luteogularis"   
+[73] "Anolis_equestris"       "Anolis_bahorucoensis"  
+[75] "Anolis_dolichocephalus" "Anolis_hendersoni"     
+[77] "Anolis_darlingtoni"     "Anolis_aliniger"       
+[79] "Anolis_singularis"      "Anolis_chlorocyanus"   
+[81] "Anolis_coelestinus"     "Anolis_occultus"       
+> tree$edge.length
+  [1] 0.26810127 0.20932226 0.40221426 0.82634594 0.76786831
+  [6] 2.08634292 0.65446723 0.78532742 0.78532742 1.43980504
+ [11] 3.52614796 1.07706084 0.77888418 0.52331605 0.36903156
+ [16] 1.54572364 0.88725537 0.65845788 0.65845788 1.91475520
+ [21] 2.43807125 1.70768807 0.25293886 0.54313422 0.71319427
+ [26] 0.71319427 1.25632849 1.50926736 1.75949382 0.73567288
+ [31] 1.30685599 0.11811920 1.20019953 1.20019953 1.31831873
+ [36] 2.62517472 3.36085799 1.23118945 0.89734632 2.11290571
+ [41] 1.28111420 1.28111420 0.46363292 0.18210476 0.78775922
+ [46] 1.96053340 1.96053340 0.42949412 2.31878812 2.31878812
+ [51] 0.55867075 2.37172663 2.37172663 1.88641532 0.59013872
+ [56] 0.16036401 1.65444818 0.63146901 1.02297917 1.02297917
+ [61] 1.81481219 2.40496130 0.06014040 0.45588024 0.71768376
+ [66] 1.57333606 1.31619869 1.60863880 1.60863880 2.92484788
+ [71] 4.49818394 0.47202992 1.50316706 0.54857980 0.63993875
+ [76] 2.05216256 0.03252799 0.41773000 1.60189417 1.60189417
+ [81] 0.86427793 0.26500436 0.89034189 0.89034189 1.15534625
+ [86] 1.17934213 1.51274879 1.51274879 3.24067072 1.89963436
+ [91] 2.27799823 0.31582284 0.25038235 0.25038235 0.56620519
+ [96] 2.84419303 1.06039155 0.47322503 0.27864948 0.51137527
+[101] 0.22220875 1.52334896 0.55321478 1.04933411 1.04933411
+[106] 1.60255928 1.34977631 1.77613194 1.77613194 3.34811700
+[111] 3.85948187 0.75219668 2.26418683 1.12174785 1.12174785
+[116] 1.10965118 2.27628350 0.97301286 1.30327064 1.30327064
+[121] 1.46068323 2.42550693 0.72516623 0.72516623 0.36571640
+[126] 0.05537032 0.71383860 2.01575823 1.49937386 0.51637398
+[131] 0.51637398 1.04819096 1.68140587 1.68140587 2.78496715
+[136] 0.63039860 0.96169561 3.77830740 0.10739431 0.17095379
+[141] 0.35123989 0.22280111 0.12843878 0.12843878 0.52218329
+[146] 0.62957760 0.38829893 0.19731913 1.51761240 2.30465455
+[151] 1.39909829 0.90555626 0.90555626 3.82226695 0.84186168
+[156] 1.28137400 0.82623162 1.07011877 1.07011877 1.89636078
+[161] 3.17773478 5.36959101
+> data <- read.csv('https://jonsmitchell.com/data/svl.csv', stringsAsFactors=F, row.names=1)
+> data
+                            svl
+Anolis_ahli            4.039125
+Anolis_allogus         4.040138
+Anolis_rubribarbus     4.078469
+Anolis_imias           4.099687
+Anolis_sagrei          4.067162
+Anolis_bremeri         4.113371
+Anolis_quadriocellifer 3.901619
+Anolis_ophiolepis      3.637962
+Anolis_mestrei         3.987147
+Anolis_jubar           3.952605
+Anolis_homolechis      4.032806
+Anolis_confusus        3.938442
+Anolis_guafe           3.877457
+Anolis_garmani         4.769473
+Anolis_opalinus        3.838376
+Anolis_grahami         4.154274
+Anolis_valencienni     4.321524
+Anolis_lineatopus      4.128612
+Anolis_evermanni       4.165605
+Anolis_stratulus       3.869881
+Anolis_krugi           3.886500
+Anolis_pulchellus      3.799022
+Anolis_gundlachi       4.188105
+Anolis_poncensis       3.820378
+Anolis_cooki           4.091535
+Anolis_cristatellus    4.189820
+Anolis_brevirostris    3.874155
+Anolis_caudalis        3.911743
+Anolis_marron          3.831810
+Anolis_websteri        3.916546
+Anolis_distichus       3.928796
+Anolis_alumina         3.588941
+Anolis_semilineatus    3.696631
+Anolis_olssoni         3.793899
+Anolis_insolitus       3.800471
+Anolis_whitemani       4.097479
+Anolis_haetianus       4.316542
+Anolis_breslini        4.051111
+Anolis_armouri         4.121684
+Anolis_cybotes         4.210982
+Anolis_shrevei         3.983003
+Anolis_longitibialis   4.242103
+Anolis_strahmi         4.274271
+Anolis_marcanoi        4.079485
+Anolis_baleatus        5.053056
+Anolis_barahonae       5.076958
+Anolis_ricordii        5.013963
+Anolis_cuvieri         4.875012
+Anolis_altitudinalis   3.842994
+Anolis_oporinus        3.845670
+Anolis_isolepis        3.657088
+Anolis_allisoni        4.375390
+Anolis_porcatus        4.258991
+Anolis_loysiana        3.701240
+Anolis_guazuma         3.763884
+Anolis_placidus        3.773967
+Anolis_sheplani        3.682924
+Anolis_alayoni         3.815705
+Anolis_angusticeps     3.788595
+Anolis_paternus        3.802961
+Anolis_alutaceus       3.554891
+Anolis_inexpectatus    3.537439
+Anolis_clivicola       3.758726
+Anolis_cupeyalensis    3.462014
+Anolis_cyanopleurus    3.630161
+Anolis_alfaroi         3.526655
+Anolis_macilentus      3.715765
+Anolis_vanidicus       3.626206
+Anolis_baracoae        5.042780
+Anolis_noblei          5.083473
+Anolis_smallwoodi      5.035096
+Anolis_luteogularis    5.101085
+Anolis_equestris       5.113994
+Anolis_bahorucoensis   3.827445
+Anolis_dolichocephalus 3.908550
+Anolis_hendersoni      3.859835
+Anolis_darlingtoni     4.302036
+Anolis_aliniger        4.036557
+Anolis_singularis      4.057997
+Anolis_chlorocyanus    4.275448
+Anolis_coelestinus     4.297965
+Anolis_occultus        3.663049
+> data[,1]
+ [1] 4.039125 4.040138 4.078469 4.099687 4.067162 4.113371 3.901619
+ [8] 3.637962 3.987147 3.952605 4.032806 3.938442 3.877457 4.769473
+[15] 3.838376 4.154274 4.321524 4.128612 4.165605 3.869881 3.886500
+[22] 3.799022 4.188105 3.820378 4.091535 4.189820 3.874155 3.911743
+[29] 3.831810 3.916546 3.928796 3.588941 3.696631 3.793899 3.800471
+[36] 4.097479 4.316542 4.051111 4.121684 4.210982 3.983003 4.242103
+[43] 4.274271 4.079485 5.053056 5.076958 5.013963 4.875012 3.842994
+[50] 3.845670 3.657088 4.375390 4.258991 3.701240 3.763884 3.773967
+[57] 3.682924 3.815705 3.788595 3.802961 3.554891 3.537439 3.758726
+[64] 3.462014 3.630161 3.526655 3.715765 3.626206 5.042780 5.083473
+[71] 5.035096 5.101085 5.113994 3.827445 3.908550 3.859835 4.302036
+[78] 4.036557 4.057997 4.275448 4.297965 3.663049
+> svl <- setNames(data$svl, rownames(data))
+> svl
+           Anolis_ahli         Anolis_allogus 
+              4.039125               4.040138 
+    Anolis_rubribarbus           Anolis_imias 
+              4.078469               4.099687 
+         Anolis_sagrei         Anolis_bremeri 
+              4.067162               4.113371 
+Anolis_quadriocellifer      Anolis_ophiolepis 
+              3.901619               3.637962 
+        Anolis_mestrei           Anolis_jubar 
+              3.987147               3.952605 
+     Anolis_homolechis        Anolis_confusus 
+              4.032806               3.938442 
+          Anolis_guafe         Anolis_garmani 
+              3.877457               4.769473 
+       Anolis_opalinus         Anolis_grahami 
+              3.838376               4.154274 
+    Anolis_valencienni      Anolis_lineatopus 
+              4.321524               4.128612 
+      Anolis_evermanni       Anolis_stratulus 
+              4.165605               3.869881 
+          Anolis_krugi      Anolis_pulchellus 
+              3.886500               3.799022 
+      Anolis_gundlachi       Anolis_poncensis 
+              4.188105               3.820378 
+          Anolis_cooki    Anolis_cristatellus 
+              4.091535               4.189820 
+   Anolis_brevirostris        Anolis_caudalis 
+              3.874155               3.911743 
+         Anolis_marron        Anolis_websteri 
+              3.831810               3.916546 
+      Anolis_distichus         Anolis_alumina 
+              3.928796               3.588941 
+   Anolis_semilineatus         Anolis_olssoni 
+              3.696631               3.793899 
+      Anolis_insolitus       Anolis_whitemani 
+              3.800471               4.097479 
+      Anolis_haetianus        Anolis_breslini 
+              4.316542               4.051111 
+        Anolis_armouri         Anolis_cybotes 
+              4.121684               4.210982 
+        Anolis_shrevei   Anolis_longitibialis 
+              3.983003               4.242103 
+        Anolis_strahmi        Anolis_marcanoi 
+              4.274271               4.079485 
+       Anolis_baleatus       Anolis_barahonae 
+              5.053056               5.076958 
+       Anolis_ricordii         Anolis_cuvieri 
+              5.013963               4.875012 
+  Anolis_altitudinalis        Anolis_oporinus 
+              3.842994               3.845670 
+       Anolis_isolepis        Anolis_allisoni 
+              3.657088               4.375390 
+       Anolis_porcatus        Anolis_loysiana 
+              4.258991               3.701240 
+        Anolis_guazuma        Anolis_placidus 
+              3.763884               3.773967 
+       Anolis_sheplani         Anolis_alayoni 
+              3.682924               3.815705 
+    Anolis_angusticeps        Anolis_paternus 
+              3.788595               3.802961 
+      Anolis_alutaceus    Anolis_inexpectatus 
+              3.554891               3.537439 
+      Anolis_clivicola    Anolis_cupeyalensis 
+              3.758726               3.462014 
+   Anolis_cyanopleurus         Anolis_alfaroi 
+              3.630161               3.526655 
+     Anolis_macilentus       Anolis_vanidicus 
+              3.715765               3.626206 
+       Anolis_baracoae          Anolis_noblei 
+              5.042780               5.083473 
+     Anolis_smallwoodi    Anolis_luteogularis 
+              5.035096               5.101085 
+      Anolis_equestris   Anolis_bahorucoensis 
+              5.113994               3.827445 
+Anolis_dolichocephalus      Anolis_hendersoni 
+              3.908550               3.859835 
+    Anolis_darlingtoni        Anolis_aliniger 
+              4.302036               4.036557 
+     Anolis_singularis    Anolis_chlorocyanus 
+              4.057997               4.275448 
+    Anolis_coelestinus        Anolis_occultus 
+              4.297965               3.663049 
+> Ancestors <- fastAnc(tree, svl, vars=True, CI=TRUE)
+Error in fastAnc(tree, svl, vars = True, CI = TRUE) : 
+  object 'True' not found
+> Ancestors <- fastAnc(tree, svl, vars=TRUE, CI=TRUE)
+> Ancestors
+Ancestral character estimates using fastAnc:
+      83       84       85       86       87       88       89 
+4.053507 4.038324 4.038407 4.051197 4.027873 4.043612 4.053199 
+      90       91       92       93       94       95       96 
+4.044719 3.975396 3.950358 3.925639 3.963652 3.995629 3.947088 
+      97       98       99      100      101      102      103 
+3.954565 3.977589 4.156808 4.207137 4.239599 4.250178 3.999745 
+     104      105      106      107      108      109      110 
+4.004977 4.014773 4.005530 3.991640 3.925306 3.995046 4.048810 
+     111      112      113      114      115      116      117 
+3.929509 3.907711 3.901007 3.884858 4.034895 4.076253 3.978248 
+     118      119      120      121      122      123      124 
+3.825580 3.712120 4.183535 4.162888 4.169471 4.147822 4.147520 
+     125      126      127      128      129      130      131 
+4.159965 4.113735 4.133362 4.223522 4.641372 5.003272 5.047482 
+     132      133      134      135      136      137      138 
+3.878224 3.865538 3.871455 3.896567 3.920443 3.814046 3.829590 
+     139      140      141      142      143      144      145 
+4.159745 3.829401 3.748489 3.815744 3.803787 3.701568 3.566374 
+     146      147      148      149      150      151      152 
+3.677723 3.675137 3.662177 3.563141 3.645211 4.089207 4.219993 
+     153      154      155      156      157      158      159 
+5.040076 5.050777 5.051341 5.057507 4.188520 4.171072 3.984883 
+     160      161      162      163 
+3.908811 4.194722 4.162532 4.092578 
+
+Variances on ancestral states:
+      83       84       85       86       87       88       89 
+0.010328 0.007593 0.008188 0.009994 0.011778 0.014640 0.009408 
+      90       91       92       93       94       95       96 
+0.005851 0.011690 0.010321 0.008737 0.008089 0.005022 0.007902 
+      97       98       99      100      101      102      103 
+0.006743 0.005031 0.014554 0.013068 0.007226 0.006866 0.012073 
+     104      105      106      107      108      109      110 
+0.010393 0.009631 0.008480 0.008479 0.010664 0.010296 0.010925 
+     111      112      113      114      115      116      117 
+0.011255 0.008090 0.007676 0.006751 0.007642 0.009597 0.014142 
+     118      119      120      121      122      123      124 
+0.015452 0.011433 0.011826 0.012144 0.009638 0.007041 0.006937 
+     125      126      127      128      129      130      131 
+0.008061 0.006167 0.005488 0.009973 0.016501 0.004284 0.001999 
+     132      133      134      135      136      137      138 
+0.009886 0.009340 0.009925 0.010319 0.010555 0.009287 0.007168 
+     139      140      141      142      143      144      145 
+0.011544 0.012012 0.008766 0.011981 0.009127 0.010495 0.005997 
+     146      147      148      149      150      151      152 
+0.008966 0.008899 0.010353 0.004287 0.010369 0.013072 0.012440 
+     153      154      155      156      157      158      159 
+0.003660 0.002852 0.002172 0.001028 0.011334 0.012113 0.013271 
+     160      161      162      163 
+0.007104 0.013355 0.010983 0.007688 
+
+Lower & upper 95% CIs:
+       lower    upper
+83  3.854320 4.252694
+84  3.867534 4.209115
+85  3.861047 4.215767
+86  3.855251 4.247142
+87  3.815163 4.240583
+88  3.806464 4.280761
+89  3.863088 4.243310
+90  3.894801 4.194637
+91  3.763481 4.187311
+92  3.751237 4.149479
+93  3.742439 4.108839
+94  3.787376 4.139927
+95  3.856726 4.134532
+96  3.772858 4.121318
+97  3.793615 4.115514
+98  3.838573 4.116604
+99  3.920357 4.393259
+100 3.983081 4.431194
+101 4.072985 4.406214
+102 4.087775 4.412582
+103 3.784388 4.215101
+104 3.805165 4.204788
+105 3.822427 4.207119
+106 3.825036 4.186024
+107 3.811158 4.172121
+108 3.722901 4.127710
+109 3.796163 4.193930
+110 3.843949 4.253670
+111 3.721572 4.137445
+112 3.731419 4.084003
+113 3.729284 4.072731
+114 3.723819 4.045896
+115 3.863552 4.206237
+116 3.884240 4.268265
+117 3.745165 4.211331
+118 3.581941 4.069219
+119 3.502545 3.921696
+120 3.970389 4.396680
+121 3.946895 4.378881
+122 3.977055 4.361888
+123 3.983361 4.312283
+124 3.984276 4.310764
+125 3.983987 4.335942
+126 3.959822 4.267648
+127 3.988168 4.278556
+128 4.027787 4.419257
+129 4.389597 4.893148
+130 4.874990 5.131554
+131 4.959847 5.135117
+132 3.683342 4.073106
+133 3.676112 4.054964
+134 3.676194 4.066716
+135 3.697468 4.095666
+136 3.719074 4.121812
+137 3.625159 4.002933
+138 3.663645 3.995535
+139 3.949156 4.370334
+140 3.614589 4.044212
+141 3.564976 3.932002
+142 3.601204 4.030284
+143 3.616534 3.991039
+144 3.500775 3.902362
+145 3.414595 3.718154
+146 3.492129 3.863316
+147 3.490242 3.860031
+148 3.462746 3.861609
+149 3.434812 3.691470
+150 3.445623 3.844799
+151 3.865113 4.313301
+152 4.001387 4.438600
+153 4.921499 5.158653
+154 4.946102 5.155452
+155 4.959989 5.142693
+156 4.994652 5.120362
+157 3.979858 4.397182
+158 3.955358 4.386786
+159 3.759091 4.210676
+160 3.743611 4.074011
+161 3.968219 4.421226
+162 3.957124 4.367939
+163 3.920724 4.264433
+
+> fastAnc
+function (tree, x, vars = FALSE, CI = FALSE, ...) 
+{
+    if (!inherits(tree, "phylo")) 
+        stop("tree should be object of class \"phylo\".")
+    if (length(class(tree) > 1)) 
+        class(tree) <- "phylo"
+    if (hasArg(anc.states)) 
+        anc.states <- list(...)$anc.states
+    else anc.states <- NULL
+    if (!is.null(anc.states)) {
+        nodes <- as.numeric(names(anc.states))
+        tt <- tree
+        for (i in 1:length(nodes)) {
+            M <- matchNodes(tt, tree, method = "distances", quiet = TRUE)
+            ii <- M[which(M[, 2] == nodes[i]), 1]
+            tt <- bind.tip(tt, nodes[i], edge.length = 0, where = ii)
+        }
+        x <- c(x, anc.states)
+    }
+    else tt <- tree
+    if (!is.binary(tt)) 
+        btree <- multi2di(tt)
+    else btree <- tt
+    M <- btree$Nnode
+    N <- length(btree$tip.label)
+    anc <- v <- vector()
+    for (i in 1:M + N) {
+        a <- collapse.singles(multi2di(ape::root.phylo(btree, 
+            node = i)))
+        anc[i - N] <- ace(x, a, method = "pic")$ace[1]
+        names(anc)[i - N] <- i
+        if (vars || CI) {
+            picx <- pic(x, a, rescaled.tree = TRUE)
+            b <- picx$rescaled.tree
+            d <- which(b$edge[, 1] == (length(b$tip.label) + 
+                1))
+            v[i - N] <- (1/b$edge.length[d[1]] + 1/b$edge.length[d[2]])^(-1) * 
+                mean(picx$contr^2)
+            names(v)[i - N] <- names(anc)[i - N]
+        }
+    }
+    if (!is.binary(tree) || !is.null(anc.states)) {
+        ancNames <- matchNodes(tree, btree, method = "distances", 
+            quiet = TRUE)
+        anc <- anc[as.character(ancNames[, 2])]
+        names(anc) <- ancNames[, 1]
+        if (vars || CI) {
+            v <- v[as.character(ancNames[, 2])]
+            names(v) <- ancNames[, 1]
+        }
+    }
+    obj <- list(ace = anc)
+    if (vars) 
+        obj$var <- v
+    if (CI) {
+        obj$CI95 <- cbind(anc - 1.96 * sqrt(v), anc + 1.96 * 
+            sqrt(v))
+        rownames(obj$CI95) <- names(anc)
+    }
+    if (length(obj) == 1) 
+        obj <- obj$ace
+    class(obj) <- "fastAnc"
+    obj
+}
+<bytecode: 0x7fde24af4778>
+<environment: namespace:phytools>
+> par(mar=c(0.1,0.1,0.1,0.1))
+> plot(tree, type="fan", lwd=2, show.tip.label=F)
+> tiplabels(pch=16, cex=0.25*svl[tree$tip.label])
+> nodelabels(pch=16, cex=0.25*Ancestors$ace)
+> obj <- contMap(tree, svl, plot=F)
+> plot(obj, type="fan", legend=0.7*max(nodeHeights(tree)), sig=2, fsize=c(0.7, 0.9))
+> fossilData <- data.frame(svl=log(c(25.4, 23.2, 17.7, 19.7, 24, 31)), tip1=c("Anolis_aliniger", "Anolis_aliniger", "Anolis_occultus", "Anolis_ricordii", "Anolis_cristatellus", "Anolis_occultus"), tip2=c("Anolis_chlorocyanus", "Anolis_coelestinus", "Anolis_hendersoni", "Anolis_cybotes", "Anolis_angusticeps", "Anolis_angusticeps"))
+> fossilNodes <- c()
+> nodeN <- c()
+> {
++ for(i in 1:nrow(fossilData))
++ i <- 1 if(i == 1) {
+Error: unexpected 'if' in:
+"for(i in 1:nrow(fossilData))
+i <- 1 if"
+> i <- 1 if(i==1){
+Error: unexpected 'if' in "i <- 1 if"
+> i <- 1 if(i == 1){
+Error: unexpected 'if' in "i <- 1 if"
+> i <- 1 if(i==1){
+Error: unexpected 'if' in "i <- 1 if"
+> i <- 1 if(i==1){
+Error: unexpected 'if' in "i <- 1 if"
+> 		print(Ancestors) }
+Error: unexpected '}' in "                print(Ancestors) }"
+> 		}
+Error: unexpected '}' in "                }"
+> print(Ancestors) }
+Error: unexpected '}' in "print(Ancestors) }"
+> 		}
+Error: unexpected '}' in "                }"
+> 
+> fossilNodes <- c()
+> nodeN <- c()
+> Node <- fastMRCA(tree, fossilData[i, "tip1"], fossilData[i, "tip2"])
+Error in `[.data.frame`(fossilData, i, "tip1") : object 'i' not found
+> for(i in 1:nrow(fossilData))
++ 
++ i <- 1
+> if(i == 1) {
++ }
+NULL
+> print(Ancestors)
+Ancestral character estimates using fastAnc:
+      83       84       85       86       87       88       89 
+4.053507 4.038324 4.038407 4.051197 4.027873 4.043612 4.053199 
+      90       91       92       93       94       95       96 
+4.044719 3.975396 3.950358 3.925639 3.963652 3.995629 3.947088 
+      97       98       99      100      101      102      103 
+3.954565 3.977589 4.156808 4.207137 4.239599 4.250178 3.999745 
+     104      105      106      107      108      109      110 
+4.004977 4.014773 4.005530 3.991640 3.925306 3.995046 4.048810 
+     111      112      113      114      115      116      117 
+3.929509 3.907711 3.901007 3.884858 4.034895 4.076253 3.978248 
+     118      119      120      121      122      123      124 
+3.825580 3.712120 4.183535 4.162888 4.169471 4.147822 4.147520 
+     125      126      127      128      129      130      131 
+4.159965 4.113735 4.133362 4.223522 4.641372 5.003272 5.047482 
+     132      133      134      135      136      137      138 
+3.878224 3.865538 3.871455 3.896567 3.920443 3.814046 3.829590 
+     139      140      141      142      143      144      145 
+4.159745 3.829401 3.748489 3.815744 3.803787 3.701568 3.566374 
+     146      147      148      149      150      151      152 
+3.677723 3.675137 3.662177 3.563141 3.645211 4.089207 4.219993 
+     153      154      155      156      157      158      159 
+5.040076 5.050777 5.051341 5.057507 4.188520 4.171072 3.984883 
+     160      161      162      163 
+3.908811 4.194722 4.162532 4.092578 
+
+Variances on ancestral states:
+      83       84       85       86       87       88       89 
+0.010328 0.007593 0.008188 0.009994 0.011778 0.014640 0.009408 
+      90       91       92       93       94       95       96 
+0.005851 0.011690 0.010321 0.008737 0.008089 0.005022 0.007902 
+      97       98       99      100      101      102      103 
+0.006743 0.005031 0.014554 0.013068 0.007226 0.006866 0.012073 
+     104      105      106      107      108      109      110 
+0.010393 0.009631 0.008480 0.008479 0.010664 0.010296 0.010925 
+     111      112      113      114      115      116      117 
+0.011255 0.008090 0.007676 0.006751 0.007642 0.009597 0.014142 
+     118      119      120      121      122      123      124 
+0.015452 0.011433 0.011826 0.012144 0.009638 0.007041 0.006937 
+     125      126      127      128      129      130      131 
+0.008061 0.006167 0.005488 0.009973 0.016501 0.004284 0.001999 
+     132      133      134      135      136      137      138 
+0.009886 0.009340 0.009925 0.010319 0.010555 0.009287 0.007168 
+     139      140      141      142      143      144      145 
+0.011544 0.012012 0.008766 0.011981 0.009127 0.010495 0.005997 
+     146      147      148      149      150      151      152 
+0.008966 0.008899 0.010353 0.004287 0.010369 0.013072 0.012440 
+     153      154      155      156      157      158      159 
+0.003660 0.002852 0.002172 0.001028 0.011334 0.012113 0.013271 
+     160      161      162      163 
+0.007104 0.013355 0.010983 0.007688 
+
+Lower & upper 95% CIs:
+       lower    upper
+83  3.854320 4.252694
+84  3.867534 4.209115
+85  3.861047 4.215767
+86  3.855251 4.247142
+87  3.815163 4.240583
+88  3.806464 4.280761
+89  3.863088 4.243310
+90  3.894801 4.194637
+91  3.763481 4.187311
+92  3.751237 4.149479
+93  3.742439 4.108839
+94  3.787376 4.139927
+95  3.856726 4.134532
+96  3.772858 4.121318
+97  3.793615 4.115514
+98  3.838573 4.116604
+99  3.920357 4.393259
+100 3.983081 4.431194
+101 4.072985 4.406214
+102 4.087775 4.412582
+103 3.784388 4.215101
+104 3.805165 4.204788
+105 3.822427 4.207119
+106 3.825036 4.186024
+107 3.811158 4.172121
+108 3.722901 4.127710
+109 3.796163 4.193930
+110 3.843949 4.253670
+111 3.721572 4.137445
+112 3.731419 4.084003
+113 3.729284 4.072731
+114 3.723819 4.045896
+115 3.863552 4.206237
+116 3.884240 4.268265
+117 3.745165 4.211331
+118 3.581941 4.069219
+119 3.502545 3.921696
+120 3.970389 4.396680
+121 3.946895 4.378881
+122 3.977055 4.361888
+123 3.983361 4.312283
+124 3.984276 4.310764
+125 3.983987 4.335942
+126 3.959822 4.267648
+127 3.988168 4.278556
+128 4.027787 4.419257
+129 4.389597 4.893148
+130 4.874990 5.131554
+131 4.959847 5.135117
+132 3.683342 4.073106
+133 3.676112 4.054964
+134 3.676194 4.066716
+135 3.697468 4.095666
+136 3.719074 4.121812
+137 3.625159 4.002933
+138 3.663645 3.995535
+139 3.949156 4.370334
+140 3.614589 4.044212
+141 3.564976 3.932002
+142 3.601204 4.030284
+143 3.616534 3.991039
+144 3.500775 3.902362
+145 3.414595 3.718154
+146 3.492129 3.863316
+147 3.490242 3.860031
+148 3.462746 3.861609
+149 3.434812 3.691470
+150 3.445623 3.844799
+151 3.865113 4.313301
+152 4.001387 4.438600
+153 4.921499 5.158653
+154 4.946102 5.155452
+155 4.959989 5.142693
+156 4.994652 5.120362
+157 3.979858 4.397182
+158 3.955358 4.386786
+159 3.759091 4.210676
+160 3.743611 4.074011
+161 3.968219 4.421226
+162 3.957124 4.367939
+163 3.920724 4.264433
+
+> fossilNodes <- c()
+> nodeN <- c()
+> Node <- fastMRCA(tree, fossilData[i, "tip1"], fossilData[i, "tip2"])
+> 
+> fossilNodes[i] <- fossilData[i, "svl"]
+> nodeN[i] <- Node
+> names(fossilNodes) <- nodeN
+> 
+> 		Ancestors_withFossils <- fastAnc(tree, svl, anc.states=fossilNodes, CI=TRUE, var=TRUE)
+> library('geiger')
+Error in library("geiger") : there is no package called ‘geiger’
+> install.packages('geiger')
+--- Please select a CRAN mirror for use in this session ---
+also installing the dependencies ‘mvtnorm’, ‘subplex’, ‘deSolve’, ‘ncbit’, ‘colorspace’
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/mvtnorm_1.1-1.tgz'
+Content type 'application/x-gzip' length 258520 bytes (252 KB)
+==================================================
+downloaded 252 KB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/subplex_1.6.tgz'
+Content type 'application/x-gzip' length 54860 bytes (53 KB)
+==================================================
+downloaded 53 KB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/deSolve_1.28.tgz'
+Content type 'application/x-gzip' length 2708262 bytes (2.6 MB)
+==================================================
+downloaded 2.6 MB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/ncbit_2013.03.29.tgz'
+Content type 'application/x-gzip' length 9898180 bytes (9.4 MB)
+==================================================
+downloaded 9.4 MB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/colorspace_2.0-0.tgz'
+Content type 'application/x-gzip' length 2616761 bytes (2.5 MB)
+==================================================
+downloaded 2.5 MB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/geiger_2.0.7.tgz'
+Content type 'application/x-gzip' length 1495985 bytes (1.4 MB)
+==================================================
+downloaded 1.4 MB
+
+
+The downloaded binary packages are in
+	/var/folders/tn/rx6m6pzx5z98hcxttryx5jfw0000gn/T//RtmpRpAiIT/downloaded_packages
+> fitContinuous(phy, dat, SE = 0,
++ model = c("BM","OU","EB","rate_trend","lambda","kappa","delta","mean_trend","white"),
++ bounds=list(), control = list(method =c("subplex","l-BFGS-B"),
++ 		niter = 100, FAIL = 1e+200, hessian = FALSE, CI = 0.95), ncores=NULL, ...)
+Error in fitContinuous(phy, dat, SE = 0, model = c("BM", "OU", "EB", "rate_trend",  : 
+  could not find function "fitContinuous"
+> 	fitContinuous
+Error: object 'fitContinuous' not found
+> fitContinuous <- model = c("BM","OU","EB","rate_trend","lambda","kappa","delta","mean_trend","white"),
+Error: unexpected ',' in "fitContinuous <- model = c("BM","OU","EB","rate_trend","lambda","kappa","delta","mean_trend","white"),"
+> 
+> 		aic.all <- cbind(aic.brown, aic.lambda, aic.delta, aic.kappa, aic.ou, aic.eb)
+Error in cbind(aic.brown, aic.lambda, aic.delta, aic.kappa, aic.ou, aic.eb) : 
+  object 'aic.brown' not found
+> data(geospiza)
+Warning message:
+In data(geospiza) : data set ‘geospiza’ not found
+> 
