@@ -1,0 +1,159 @@
+
+R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin17.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+[R.app GUI 1.73 (7892) x86_64-apple-darwin17.0]
+
+[History restored from /Users/karenhunt/.Rapp.history]
+
+> x <- rnorm(100, mean = 5, sd=2)
+> var(x)
+[1] 4.737951
+> mean(x)
+[1] 4.954005
+> y <- ((x*5)+2)+runif(100,0,0.1)
+> pdf('graph1.pdf', height = 4, width = 4)
+> plot(x,y)
+> abline(lm(y~x), col='orange')
+> dev.off()
+null device 
+          1 
+> coef(lm(y~x))
+(Intercept)           x 
+   2.050810    5.000022 
+> z <- c()
+> x <- rnorm(100, mean=5, sd=2)
+> for(i in 1:100) {
++ z[i] <- runif(1)
+2021-04-30 12:03:01.309 R[15369:1810072] -deltaZ is deprecated for NSEventTypeMagnify.  Please use -magnification.
++ y <- (x * z[i]) + 2 + (rnorm(100, 0:0.1))
++ | <- coef(lm(z[1:100]~y))
+Error: unexpected '|' in:
+"y <- (x * z[i]) + 2 + (rnorm(100, 0:0.1))
+|"
+> I <- coef(lm(z[1:100]~y))
+Error in model.frame.default(formula = z[1:100] ~ y, drop.unused.levels = TRUE) : 
+  invalid type (NULL) for variable 'z[1:100]'
+> }
+Error: unexpected '}' in "}"
+> pdf('graph2.pdf', height = 4, width = 4)
+> plot(z[1:100], y)
+Error in xy.coords(x, y, xlabel, ylabel, log) : 
+  'x' and 'y' lengths differ
+> abline(lm(y~z[1:100]))
+Error in model.frame.default(formula = y ~ z[1:100], drop.unused.levels = TRUE) : 
+  invalid type (NULL) for variable 'z[1:100]'
+> dev.off()
+null device 
+          1 
+> pdf('graph3.pdf', height = 4, width = 4)
+> plot(c(z, -0.029))
+> dev.off()
+null device 
+          1 
+> 	install.packages("meme")
+--- Please select a CRAN mirror for use in this session ---
+also installing the dependencies ‘farver’, ‘labeling’, ‘munsell’, ‘RColorBrewer’, ‘viridisLite’, ‘gtable’, ‘isoband’, ‘scales’, ‘showtextdb’, ‘ggplot2’, ‘gridGraphics’, ‘magick’, ‘showtext’, ‘sysfonts’
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/farver_2.1.0.tgz'
+Content type 'application/x-gzip' length 1950011 bytes (1.9 MB)
+==================================================
+downloaded 1.9 MB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/labeling_0.4.2.tgz'
+Content type 'application/x-gzip' length 60296 bytes (58 KB)
+==================================================
+downloaded 58 KB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/munsell_0.5.0.tgz'
+Content type 'application/x-gzip' length 241504 bytes (235 KB)
+==================================================
+downloaded 235 KB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/RColorBrewer_1.1-2.tgz'
+Content type 'application/x-gzip' length 52944 bytes (51 KB)
+==================================================
+downloaded 51 KB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/viridisLite_0.4.0.tgz'
+Content type 'application/x-gzip' length 1296423 bytes (1.2 MB)
+==================================================
+downloaded 1.2 MB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/gtable_0.3.0.tgz'
+Content type 'application/x-gzip' length 431500 bytes (421 KB)
+==================================================
+downloaded 421 KB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/isoband_0.2.4.tgz'
+Content type 'application/x-gzip' length 3710533 bytes (3.5 MB)
+==================================================
+downloaded 3.5 MB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/scales_1.1.1.tgz'
+Content type 'application/x-gzip' length 552885 bytes (539 KB)
+==================================================
+downloaded 539 KB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/showtextdb_3.0.tgz'
+Content type 'application/x-gzip' length 2009671 bytes (1.9 MB)
+==================================================
+downloaded 1.9 MB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/ggplot2_3.3.3.tgz'
+Content type 'application/x-gzip' length 4068756 bytes (3.9 MB)
+==================================================
+downloaded 3.9 MB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/gridGraphics_0.5-1.tgz'
+Content type 'application/x-gzip' length 247412 bytes (241 KB)
+==================================================
+downloaded 241 KB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/magick_2.7.1.tgz'
+Content type 'application/x-gzip' length 38922704 bytes (37.1 MB)
+==================================================
+downloaded 37.1 MB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/showtext_0.9-2.tgz'
+Content type 'application/x-gzip' length 464876 bytes (453 KB)
+==================================================
+downloaded 453 KB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/sysfonts_0.8.3.tgz'
+Content type 'application/x-gzip' length 2680532 bytes (2.6 MB)
+==================================================
+downloaded 2.6 MB
+
+trying URL 'https://cloud.r-project.org/bin/macosx/contrib/4.0/meme_0.2.3.tgz'
+Content type 'application/x-gzip' length 3207548 bytes (3.1 MB)
+==================================================
+downloaded 3.1 MB
+
+
+The downloaded binary packages are in
+	/var/folders/tn/rx6m6pzx5z98hcxttryx5jfw0000gn/T//RtmpJAB9am/downloaded_packages
+> library('meme')
+> dir()
+ [1] "Applications"  "Desktop"       "Documents"     "Downloads"    
+ [5] "graph1.pdf"    "graph2.pdf"    "graph3.pdf"    "Library"      
+ [9] "Movies"        "Music"         "OwnTrend1.pdf" "OwnTrend2.pdf"
+[13] "Pictures"      "Public"        "Question1.pdf" "Question2.pdf"
+[17] "Question3,pdf" "testdir"      
+objc[15369]: Class FIFinderSyncExtensionHost is implemented in both /System/Library/PrivateFrameworks/FinderKit.framework/Versions/A/FinderKit (0x7fffab7a23d8) and /System/Library/PrivateFrameworks/FileProvider.framework/OverrideBundles/FinderSyncCollaborationFileProviderOverride.bundle/Contents/MacOS/FinderSyncCollaborationFileProviderOverride (0x10f283f50). One of the two will be used. Which one is undefined.
+> 
